@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="StudySphere is a smart learning and exam preparation assistant." />
+  <title>StudySphere — Smart exam preparation</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Main navigation">
+      <a class="brand" href="#dashboard" data-view-target="dashboard" aria-label="StudySphere home">
+        <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+        <span>Study<span>Sphere</span></span>
+      </a>
+
+      <nav class="main-nav">
+        <a class="nav-link active" href="#dashboard" data-view-target="dashboard"><span class="nav-icon">⌂</span>Dashboard</a>
+        <a class="nav-link" href="#planner" data-view-target="planner"><span class="nav-icon">▣</span>Study planner</a>
+        <a class="nav-link" href="#learn" data-view-target="learn"><span class="nav-icon">▹</span>Learn</a>
+        <a class="nav-link" href="#quizzes" data-view-target="quizzes"><span class="nav-icon">✓</span>Quizzes</a>
+        <a class="nav-link" href="#insights" data-view-target="insights"><span class="nav-icon">⌁</span>Insights</a>
+      </nav>
+
+      <div class="sidebar-spacer"></div>
+      <div class="exam-card">
+        <span class="exam-card-icon">✦</span>
+        <p>Finals are in</p>
+        <strong><span id="daysLeftSide">19</span> days</strong>
+        <div class="mini-progress"><span style="width:68%"></span></div>
+        <button class="text-button" type="button" data-view-target="planner">View plan →</button>
+      </div>
+      <button class="profile" type="button" id="profileButton" aria-label="Open account menu">
+        <span class="avatar">AR</span>
+        <span class="profile-copy"><strong>Aarav Rai</strong><small>Grade 12 • Science</small></span>
+        <span class="more">•••</span>
+      </button>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <button class="mobile-menu" id="menuButton" type="button" aria-label="Open navigation">☰</button>
+        <div class="greeting">
+          <p>Friday, 22 August</p>
+          <h1>Good morning, Aarav <span aria-hidden="true">✦</span></h1>
+        </div>
+        <div class="top-actions">
+          <button class="round-button" id="themeButton" type="button" aria-label="Toggle color theme">◐</button>
+          <button class="round-button notification" id="notificationButton" type="button" aria-label="Notifications">♢<i></i></button>
+          <button class="ask-ai-button" type="button" data-open-ai><span>✧</span> Ask AI</button>
+        </div>
+      </header>
+
+      <section class="view active" id="dashboard" aria-labelledby="dashboard-heading">
+        <div class="overview-heading">
+          <div>
+            <p class="eyebrow">Your command center</p>
+            <h2 id="dashboard-heading">Keep the momentum going.</h2>
+            <p class="subtle">You’re right on track for your Physics &amp; Maths finals.</p>
+          </div>
+          <button class="outline-button" type="button" data-view-target="insights">View full report <span>→</span></button>
+        </div>
+
+        <div class="metrics-grid">
+          <article class="metric-card readiness-card">
+            <div class="metric-icon lilac">⌁</div>
+            <div class="metric-copy"><span>Exam readiness</span><strong><span id="readinessValue">68</span><small>%</small></strong><em id="readinessTrend">↑ 6% this week</em></div>
+            <div class="readiness-ring" aria-label="Exam readiness: 68 percent"><span>68<small>%</small></span></div>
+          </article>
+          <article class="metric-card">
+            <div class="metric-icon peach">◴</div>
+            <div class="metric-copy"><span>Focus time</span><strong>14<small>h 25m</small></strong><em>↑ 2h 10m vs. last week</em></div>
+          </article>
+          <article class="metric-card">
+            <div class="metric-icon mint">✓</div>
+            <div class="metric-copy"><span>Questions solved</span><strong>276</strong><em>↑ 32 this week</em></div>
+          </article>
+          <article class="metric-card streak-card">
+            <div class="metric-icon yellow">♨</div>
+            <div class="metric-copy"><span>Current streak</span><strong>7<small> days</small></strong><em>Personal best: 12 days</em></div>
+            <div class="streak-dots" aria-label="Seven day study streak"><b></b><b></b><b></b><b></b><b></b><b></b><b></b></div>
+          </article>
+        </div>
+
+        <div class="dashboard-grid">
+          <section class="panel study-panel" aria-labelledby="today-heading">
+            <div class="panel-heading">
+              <div><p class="eyebrow">Friday, 22 August</p><h3 id="today-heading">Today’s study plan</h3></div>
+              <button class="icon-text-button" type="button" data-view-target="planner">Full schedule <span>→</span></button>
+            </div>
+            <div class="timeline">
+              <article class="plan-item done">
+                <time>08:30<br><span>AM</span></time>
+                <div class="timeline-marker"><span>✓</span></div>
+                <div class="plan-content"><div><span class="subject physics">Physics</span><h4>Electrostatics revision</h4><p>Electric field &amp; potential</p></div><strong>45 min</strong></div>
+              </article>
+              <article class="plan-item current">
+                <time>10:00<br><span>AM</span></time>
+                <div class="timeline-marker"><span></span></div>
+                <div class="plan-content"><div><span class="subject maths">Mathematics</span><h4>Differential equations</h4><p>Concept review + 15 practice questions</p></div><button class="small-primary" type="button" id="startFocus">Start session</button></div>
+              </article>
+              <article class="plan-item">
+                <time>02:30<br><span>PM</span></time>
+                <div class="timeline-marker"><span></span></div>
+                <div class="plan-content"><div><span class="subject chemistry">Chemistry</span><h4>Organic reactions quiz</h4><p>20 questions • 25 min</p></div><strong>25 min</strong></div>
+              </article>
+              <article class="plan-item">
+                <time>06:00<br><span>PM</span></time>
+                <div class="timeline-marker"><span></span></div>
+                <div class="plan-content"><div><span class="subject revision">Revision</span><h4>Spaced recall</h4><p>Formula cards from this week</p></div><strong>20 min</strong></div>
+              </article>
+            </div>
+          </section>
+
+          <section class="panel performance-panel" aria-labelledby="performance-heading">
+            <div class="panel-heading"><div><p class="eyebrow">Weekly progress</p><h3 id="performance-heading">Performance snapshot</h3></div><button class="dots-button" type="button" aria-label="More performance options">•••</button></div>
+            <div class="chart-legend"><span><i class="legend-dot violet"></i>This week</span><span><i class="legend-dot gray"></i>Last week</span></div>
+            <div class="bar-chart" aria-label="Study time by day">
+              <div class="chart-bars">
+                <div class="bar-pair"><span class="last" style="height:38%"></span><span class="this" style="height:62%"></span><label>Mon</label></div>
+                <div class="bar-pair"><span class="last" style="height:55%"></span><span class="this" style="height:48%"></span><label>Tue</label></div>
+                <div class="bar-pair"><span class="last" style="height:42%"></span><span class="this" style="height:72%"></span><label>Wed</label></div>
+                <div class="bar-pair"><span class="last" style="height:64%"></span><span class="this" style="height:88%"></span><label>Thu</label></div>
+                <div class="bar-pair today"><span class="last" style="height:40%"></span><span class="this" style="height:76%"><b>2h 25m</b></span><label>Fri</label></div>
+                <div class="bar-pair muted"><span class="last" style="height:52%"></span><span class="this" style="height:34%"></span><label>Sat</label></div>
+                <div class="bar-pair muted"><span class="last" style="height:34%"></span><span class="this" style="height:20%"></span><label>Sun</label></div>
+              </div>
+              <div class="chart-footer"><span>0h</span><strong>14h 25m <small>studied this week</small></strong><span>4h</span></div>
+            </div>
+            <div class="trend-callout"><span>↗</span><p>You studied <strong>22% more</strong> than last week. Keep it up!</p></div>
+          </section>
+        </div>
+
+        <div class="bottom-grid">
+          <section class="panel topics-panel" aria-labelledby="topics-heading">
+            <div class="panel-heading"><div><p class="eyebrow">Smart analysis</p><h3 id="topics-heading">Topic mastery</h3></div><button class="icon-text-button" type="button" data-view-target="insights">See insights <span>→</span></button></div>
+            <div class="topic-list">
+              <div class="topic-row"><div class="topic-name"><i class="physics"></i><span><strong>Physics</strong><small>Electrostatics</small></span></div><div class="topic-progress"><div><span style="width:82%"></span></div><b>82%</b></div><em class="strong">Strong</em></div>
+              <div class="topic-row"><div class="topic-name"><i class="maths"></i><span><strong>Mathematics</strong><small>Differential equations</small></span></div><div class="topic-progress"><div><span style="width:54%"></span></div><b>54%</b></div><em class="practice">Practice</em></div>
+              <div class="topic-row"><div class="topic-name"><i class="chemistry"></i><span><strong>Chemistry</strong><small>Organic reactions</small></span></div><div class="topic-progress"><div><span style="width:42%"></span></div><b>42%</b></div><em class="focus">Focus</em></div>
+              <div class="topic-row"><div class="topic-name"><i class="biology"></i><span><strong>Biology</strong><small>Human reproduction</small></span></div><div class="topic-progress"><div><span style="width:76%"></span></div><b>76%</b></div><em class="strong">Strong</em></div>
+            </div>
+          </section>
+          <section class="panel recommendation-panel" aria-labelledby="recommend-heading">
+            <div class="recommendation-orb">✦</div>
+            <div><p class="eyebrow">Personalized for you</p><h3 id="recommend-heading">Tackle organic reactions next</h3><p>It’s your highest-impact opportunity this week. A short quiz now can lift your readiness score.</p><button class="small-primary" type="button" data-view-target="quizzes">Take the quiz <span>→</span></button></div>
+          </section>
+        </div>
+      </section>
+
+      <section class="view" id="planner" aria-labelledby="planner-heading">
+        <div class="overview-heading"><div><p class="eyebrow">Adaptive schedule</p><h2 id="planner-heading">Your plan, shaped around progress.</h2><p class="subtle">The next best task changes as you learn.</p></div><div class="heading-actions"><button class="outline-button" type="button" id="setupExam">Exam setup</button><button class="small-primary" type="button" id="addTask">+ Add study task</button></div></div>
+        <div class="planner-layout">
+          <section class="panel calendar-panel"><div class="panel-heading"><h3>August 2026</h3><div class="calendar-arrows"><button type="button">‹</button><button type="button">›</button></div></div><div class="calendar-week"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span></div><div class="calendar-days"><span></span><span></span><span></span><span></span><span class="past">1</span><span class="past">2</span><span class="past">3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span><span>17</span><span>18</span><span>19</span><span>20</span><span>21</span><button class="selected" type="button">22</button><span>23</span><span>24</span><span>25</span><span>26</span><span>27</span><span>28</span><span>29</span><span>30</span><span>31</span></div></section>
+          <section class="panel task-panel"><div class="panel-heading"><div><p class="eyebrow">Today • 1h 30m planned</p><h3>Study tasks</h3></div><span class="plan-count">4 tasks</span></div><div class="task-list" id="taskList"><label class="task-row done"><input type="checkbox" checked /><span class="checkmark"></span><span><strong>Electrostatics revision</strong><small>Physics • 45 min</small></span><em>Complete</em></label><label class="task-row"><input type="checkbox" /><span class="checkmark"></span><span><strong>Differential equations practice</strong><small>Mathematics • 30 min</small></span><em>Next up</em></label><label class="task-row"><input type="checkbox" /><span class="checkmark"></span><span><strong>Organic reactions quiz</strong><small>Chemistry • 25 min</small></span><em>Recommended</em></label><label class="task-row"><input type="checkbox" /><span class="checkmark"></span><span><strong>Formula flashcards</strong><small>Revision • 20 min</small></span><em>Later</em></label></div></section>
+        </div>
+        <section class="panel planner-note"><span>✦</span><p><strong>Why this plan works:</strong> We’ve placed Chemistry before your evening revision because quick practice is most helpful while the topic is still fresh.</p></section>
+        <div class="materials-layout">
+          <section class="panel material-panel" aria-labelledby="materials-heading"><div class="panel-heading"><div><p class="eyebrow">Learning workspace</p><h3 id="materials-heading">Syllabus &amp; study material</h3></div><span class="material-status" id="materialStatus">2 files ready</span></div><label class="upload-zone" for="studyMaterial"><input id="studyMaterial" type="file" accept=".pdf,.doc,.docx,.txt" /><span class="upload-icon">↑</span><strong>Upload a study file</strong><small>PDF, DOCX or TXT • Topic analysis begins automatically</small></label><div class="material-list" id="materialList"><div class="material-row"><span class="file-badge">PDF</span><span><strong>Physics_Unit_3_Notes.pdf</strong><small>12 extracted topics</small></span><em>Ready</em></div><div class="material-row"><span class="file-badge doc">DOC</span><span><strong>Chemistry_Syllabus.docx</strong><small>8 extracted topics</small></span><em>Ready</em></div></div></section>
+          <section class="panel topic-analysis" aria-labelledby="analysis-heading"><div class="panel-heading"><div><p class="eyebrow">AI topic analysis</p><h3 id="analysis-heading">What we found</h3></div><span class="analysis-score">20 topics</span></div><p>Topics from your materials are grouped so every quiz and revision block stays relevant.</p><div class="topic-tags" id="topicTags"><span>Electric field</span><span>Potential difference</span><span>Differential equations</span><span>Organic reactions</span><span>Human reproduction</span></div><button class="icon-text-button" type="button" id="reviewSyllabus">Review all topics <span>→</span></button></section>
+        </div>
+      </section>
+
+      <section class="view" id="learn" aria-labelledby="learn-heading">
+        <div class="overview-heading"><div><p class="eyebrow">Guided learning</p><h2 id="learn-heading">Pick up where you left off.</h2><p class="subtle">Clear explanations, focused practice, no blank-page anxiety.</p></div><button class="outline-button" type="button" data-open-ai>Ask about a topic <span>→</span></button></div>
+        <div class="learn-grid">
+          <article class="course-feature"><div class="course-illustration"><span>∿</span><i></i><b></b></div><div class="course-copy"><span class="subject maths">Mathematics</span><h3>Master differential equations</h3><p>Continue your concept path with a worked example and a short practice set.</p><div class="course-meta"><span>▹ 18 min lesson</span><span>◌ 54% mastery</span></div><button class="small-primary" type="button" id="continueLearning">Continue learning <span>→</span></button></div></article>
+          <section class="panel resource-panel"><div class="panel-heading"><div><p class="eyebrow">Suggested for you</p><h3>Quick resources</h3></div></div><button class="resource-row" type="button"><span class="resource-icon video">▹</span><span><strong>Visual guide: first-order DE</strong><small>8 min video</small></span><b>→</b></button><button class="resource-row" type="button"><span class="resource-icon note">≡</span><span><strong>Formula sheet</strong><small>Downloadable notes</small></span><b>→</b></button><button class="resource-row" type="button"><span class="resource-icon quiz-icon">✓</span><span><strong>Warm-up questions</strong><small>5 questions • Easy</small></span><b>→</b></button></section>
+        </div>
+      </section>
+
+      <section class="view" id="quizzes" aria-labelledby="quizzes-heading">
+        <div class="overview-heading"><div><p class="eyebrow">Practice zone</p><h2 id="quizzes-heading">Turn knowledge into confidence.</h2><p class="subtle">Adaptive questions target the things worth revisiting.</p></div><span class="question-counter">Question <strong id="questionNumber">1</strong> of 5</span></div>
+        <div class="quiz-layout"><section class="panel quiz-card"><div class="quiz-top"><span class="subject chemistry">Chemistry</span><span>Organic reactions • Medium</span></div><div class="quiz-progress"><span id="quizProgress" style="width:20%"></span></div><h3 id="questionText">Which reagent is used to convert an alcohol into an alkyl chloride?</h3><div class="answers" id="answers"><button type="button" data-answer="0">A. Dilute sulphuric acid</button><button type="button" data-answer="1">B. Thionyl chloride (SOCl₂)</button><button type="button" data-answer="2">C. Sodium hydroxide</button><button type="button" data-answer="3">D. Aqueous ammonia</button></div><div class="quiz-bottom"><span id="quizHint">Take your time — this affects your revision plan.</span><button class="small-primary" id="nextQuestion" type="button" disabled>Check answer</button></div></section><aside class="quiz-side"><section class="panel confidence-card"><span class="confidence-icon">✦</span><h3>Practice with purpose</h3><p>Your answers update your topic mastery and tomorrow’s study plan.</p><div class="mastery-line"><span>Organic reactions</span><strong>42%</strong></div><div class="progress-track"><span style="width:42%"></span></div></section><section class="panel mock-card"><span class="subject physics">Physics</span><h3>Ready for a mock test?</h3><p>45 minutes • 30 questions</p><button class="outline-button" type="button" id="startMock">Start mock test →</button></section></aside></div>
+      </section>
+
+      <section class="view" id="insights" aria-labelledby="insights-heading">
+        <div class="overview-heading"><div><p class="eyebrow">Learning intelligence</p><h2 id="insights-heading">See what to do next.</h2><p class="subtle">Your study data turned into clear, useful direction.</p></div><button class="outline-button" type="button" id="downloadReport">Download report ↓</button></div>
+        <div class="insight-score-row"><section class="panel score-panel"><div class="score-ring"><strong>68<small>%</small></strong></div><div><p class="eyebrow">Exam readiness score</p><h3>Building toward confidence</h3><p>Your score is up 6 points this week. Chemistry is the fastest place to improve.</p></div></section><section class="panel score-note"><span>↗</span><p><strong>Best next move:</strong> Complete the Organic reactions quiz and revise its missed concepts to reach a projected <b>73%</b> readiness.</p></section></div>
+        <div class="insights-grid"><section class="panel strengths"><div class="panel-heading"><div><p class="eyebrow">What’s working</p><h3>Strong foundations</h3></div></div><div class="insight-topic"><span><i class="physics"></i>Electrostatics</span><b>82%</b><em>Consistent accuracy</em></div><div class="insight-topic"><span><i class="biology"></i>Human reproduction</span><b>76%</b><em>Growing confidence</em></div></section><section class="panel opportunities"><div class="panel-heading"><div><p class="eyebrow">Worth attention</p><h3>Growth opportunities</h3></div></div><div class="insight-topic"><span><i class="chemistry"></i>Organic reactions</span><b>42%</b><em>High impact</em></div><div class="insight-topic"><span><i class="maths"></i>Differential equations</span><b>54%</b><em>Practice next</em></div></section></div>
+      </section>
+    </main>
+  </div>
+
+  <div class="focus-overlay" id="focusOverlay" hidden>
+    <div class="focus-card" role="dialog" aria-modal="true" aria-labelledby="focusTitle"><button class="close-button" type="button" data-close-overlay aria-label="Close">×</button><span class="focus-flower">✦</span><p class="eyebrow">Focus session</p><h2 id="focusTitle">Differential equations</h2><div class="focus-time" id="focusTime">25:00</div><p>One step at a time. You’ve got this.</p><div class="focus-controls"><button class="outline-button" type="button" data-close-overlay>End session</button><button class="small-primary" type="button" id="pauseFocus">Pause</button></div></div>
+  </div>
+
+  <div class="ai-overlay" id="aiOverlay" hidden>
+    <div class="ai-modal" role="dialog" aria-modal="true" aria-labelledby="aiTitle"><button class="close-button" type="button" data-close-ai aria-label="Close">×</button><div class="ai-heading"><span>✧</span><div><p class="eyebrow">StudySphere AI</p><h2 id="aiTitle">What would you like to understand?</h2></div></div><div class="prompt-chips"><button type="button">Explain a concept</button><button type="button">Create a quiz</button><button type="button">Plan my revision</button></div><label class="ai-input"><textarea id="aiInput" rows="3" placeholder="e.g. Explain the difference between electric potential and electric field"></textarea><button class="small-primary" id="sendAi" type="button">Ask AI →</button></label><div class="ai-response" id="aiResponse" aria-live="polite" hidden></div></div>
+  </div>
+
+  <div class="form-overlay" id="taskOverlay" hidden>
+    <form class="form-modal" id="taskForm" aria-labelledby="taskFormTitle"><button class="close-button" type="button" data-close-task aria-label="Close">×</button><p class="eyebrow">Personalized planner</p><h2 id="taskFormTitle">Add a study task</h2><label>Task title<input id="taskTitle" required maxlength="70" placeholder="e.g. Practice electrostatics numericals" /></label><div class="form-split"><label>Subject<select id="taskSubject"><option>Physics</option><option>Mathematics</option><option>Chemistry</option><option>Biology</option><option>Revision</option></select></label><label>Minutes<input id="taskMinutes" type="number" min="5" max="240" value="30" required /></label></div><div class="modal-actions"><button class="outline-button" type="button" data-close-task>Cancel</button><button class="small-primary" type="submit">Add to plan</button></div></form>
+  </div>
+
+  <div class="form-overlay" id="setupOverlay" hidden>
+    <form class="form-modal setup-modal" id="setupForm" aria-labelledby="setupTitle"><button class="close-button" type="button" data-close-setup aria-label="Close">×</button><p class="eyebrow">Exam workspace</p><h2 id="setupTitle">Set your exam goal</h2><label>Exam name<input id="examName" required value="Science finals" maxlength="60" /></label><label>Exam date<input id="examDate" type="date" required value="2026-09-10" /></label><label>Syllabus focus<textarea id="syllabusText" rows="4" placeholder="Add your priority units, chapters, or topics.">Physics: Electrostatics; Mathematics: Differential equations; Chemistry: Organic reactions</textarea></label><p class="form-note">Your study plan and readiness score will adapt to this goal.</p><div class="modal-actions"><button class="outline-button" type="button" data-close-setup>Cancel</button><button class="small-primary" type="submit">Save exam setup</button></div></form>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
